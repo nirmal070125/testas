@@ -1,0 +1,97 @@
+<data name="contact_service">
+   <config id="DS-Directory">
+      <property name="carbon_datasource_name">DS-Directory</property>
+   </config>
+   <query id="spInsert_Contact" useConfig="DS-Directory">
+      <sql>call spInsert_Contact(?,?,?,?,?,?,?,?,?)</sql>
+      <result element="contact" rowName="">
+         <element column="ID" name="id" xsdType="string"/>
+      </result>
+      <param name="ServiceID" sqlType="STRING"/>
+      <param name="OrganizationID" sqlType="STRING"/>
+      <param name="TitleLookupID" sqlType="STRING"/>
+      <param name="FirstName" sqlType="STRING"/>
+      <param name="LastName" sqlType="STRING"/>
+      <param name="Phone" sqlType="STRING"/>
+      <param name="Email" sqlType="STRING"/>
+      <param name="CreatedBy" sqlType="STRING"/>
+      <param name="IsActive" sqlType="TINYINT"/>
+   </query>
+   <query id="spSelect_Contact" useConfig="DS-Directory">
+      <sql>call spSelect_Contact(?,?,?)</sql>
+      <result element="contacts" rowName="contact">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="firstname" name="firstname" xsdType="string"/>
+         <element column="lastname" name="lastname" xsdType="string"/>
+         <element column="TitleLookupID" name="title_lookupid" xsdType="string"/>
+         <element column="title" name="title" xsdType="string"/>
+         <element column="phone" name="phone" xsdType="string"/>
+         <element column="email" name="email" xsdType="string"/>
+      </result>
+      <param name="orgID" sqlType="STRING"/>
+      <param name="serviceID" sqlType="STRING"/>
+      <param name="contactID" sqlType="STRING"/>
+   </query>
+   <query id="spUpdate_Contact" useConfig="DS-Directory">
+      <sql>call spUpdate_Contact(?,?,?,?,?,?,?,?,?);</sql>
+      <result element="contact" rowName="">
+         <element column="Message" name="Message" xsdType="string"/>
+      </result>
+      <param name="ContactID" sqlType="STRING"/>
+      <param name="ServiceID" sqlType="STRING"/>
+      <param name="OrganizationID" sqlType="STRING"/>
+      <param name="TitleLookupID" sqlType="STRING"/>
+      <param name="FirstName" sqlType="STRING"/>
+      <param name="LastName" sqlType="STRING"/>
+      <param name="Phone" sqlType="STRING"/>
+      <param name="Email" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spDelete_Contact" useConfig="DS-Directory">
+      <sql>call spDelete_Contact(?,?)</sql>
+      <result element="contact" rowName="">
+         <element column="Message" name="Message" xsdType="string"/>
+      </result>
+      <param name="ContactID" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <operation name="Insert_Contact">
+      <call-query href="spInsert_Contact">
+         <with-param name="ServiceID" query-param="ServiceID"/>
+         <with-param name="OrganizationID" query-param="OrganizationID"/>
+         <with-param name="TitleLookupID" query-param="TitleLookupID"/>
+         <with-param name="FirstName" query-param="FirstName"/>
+         <with-param name="LastName" query-param="LastName"/>
+         <with-param name="Phone" query-param="Phone"/>
+         <with-param name="Email" query-param="Email"/>
+         <with-param name="CreatedBy" query-param="CreatedBy"/>
+         <with-param name="IsActive" query-param="IsActive"/>
+      </call-query>
+   </operation>
+   <operation name="Select_Contact">
+      <call-query href="spSelect_Contact">
+         <with-param name="orgID" query-param="orgID"/>
+         <with-param name="serviceID" query-param="serviceID"/>
+         <with-param name="contactID" query-param="contactID"/>
+      </call-query>
+   </operation>
+   <operation name="Update_Contact">
+      <call-query href="spUpdate_Contact">
+         <with-param name="ContactID" query-param="ContactID"/>
+         <with-param name="ServiceID" query-param="ServiceID"/>
+         <with-param name="OrganizationID" query-param="OrganizationID"/>
+         <with-param name="TitleLookupID" query-param="TitleLookupID"/>
+         <with-param name="FirstName" query-param="FirstName"/>
+         <with-param name="LastName" query-param="LastName"/>
+         <with-param name="Phone" query-param="Phone"/>
+         <with-param name="Email" query-param="Email"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="Delete_Contact">
+      <call-query href="spDelete_Contact">
+         <with-param name="ContactID" query-param="ContactID"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+</data>

@@ -1,0 +1,235 @@
+<data name="statistics_service">
+   <config id="DS-Directory">
+      <property name="carbon_datasource_name">DS-Directory</property>
+   </config>
+   <query id="spInsert_SocialMedia" useConfig="DS-Directory">
+      <sql>call spInsert_SocialMedia(?,?,?,?,?)</sql>
+      <result element="SocialMedia" rowName="">
+         <element column="ID" name="ID" xsdType="string"/>
+      </result>
+      <param name="TypeLookupID" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="OrganizationID" sqlType="STRING"/>
+      <param name="CreatedBy" sqlType="STRING"/>
+      <param name="IsActive" sqlType="TINYINT"/>
+   </query>
+   <query id="spSelect_SocialMedia" useConfig="DS-Directory">
+      <sql>call spSelect_SocialMedia(?,?)</sql>
+      <result element="socialmedia" rowName="media">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="name" name="name" xsdType="string"/>
+         <element column="link" name="link" xsdType="string"/>
+      </result>
+      <param name="orgID" sqlType="STRING"/>
+      <param name="SocialMediaID" sqlType="STRING"/>
+   </query>
+   <query id="spUpdate_SocialMedia" useConfig="DS-Directory">
+      <sql>call spUpdate_SocialMedia(?,?,?,?,?)</sql>
+      <result element="SocialMedia" rowName="">
+         <element column="Message" name="Message" xsdType="string"/>
+      </result>
+      <param name="SocialMediaID" sqlType="STRING"/>
+      <param name="TypeLookupID" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="OrganizationID" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spDelete_SocialMedia" useConfig="DS-Directory">
+      <sql>call spDelete_SocialMedia(?,?)</sql>
+      <result element="SocialMedia" rowName="Message">
+         <element column="Message" name="Message" xsdType="string"/>
+      </result>
+      <param name="SocialMediaID" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spInsert_RssFeed" useConfig="DS-Directory">
+      <sql>call spInsert_RssFeed(?,?,?,?,?);</sql>
+      <result element="rssfeed" rowName="">
+         <element column="ID" name="id" xsdType="string"/>
+      </result>
+      <param name="OrgID" sqlType="STRING"/>
+      <param name="CategoryLookupID" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="CreatedBy" sqlType="STRING"/>
+      <param name="IsActive" sqlType="TINYINT"/>
+   </query>
+   <query id="spSelect_RssFeed" useConfig="DS-Directory">
+      <sql>call spSelect_RssFeed(?,?);</sql>
+      <result element="rssfeeds" rowName="feed">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="category" name="category" xsdType="string"/>
+         <element column="link" name="link" xsdType="string"/>
+      </result>
+      <param name="OrgID" sqlType="STRING"/>
+      <param name="RssFeedID" sqlType="STRING"/>
+   </query>
+   <query id="spUpdate_RssFeed" useConfig="DS-Directory">
+      <sql>call spUpdate_RssFeed(?,?,?,?,?)</sql>
+      <result element="rssfeed" rowName="">
+         <element column="Message" name="message" xsdType="string"/>
+      </result>
+      <param name="RssFeed" sqlType="STRING"/>
+      <param name="OrganizationID" sqlType="STRING"/>
+      <param name="CategoryLookupID" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spDelete_RssFeed" useConfig="DS-Directory">
+      <sql>call spDelete_RssFeed(?,?);</sql>
+      <result element="rssfeed" rowName="">
+         <element column="Message" name="message" xsdType="string"/>
+      </result>
+      <param name="RssFeed" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spInsert_MostVisited" useConfig="DS-Directory">
+      <sql>call spInsert_MostVisited(?,?,?,?,?)</sql>
+      <result element="message" rowName="">
+         <element column="id" name="id" xsdType="string"/>
+      </result>
+      <param name="orgid" sqlType="STRING"/>
+      <param name="serviceid" sqlType="STRING"/>
+      <param name="weight" sqlType="STRING"/>
+      <param name="createdby" sqlType="STRING"/>
+      <param name="isactive" sqlType="BIT"/>
+   </query>
+   <query id="spSelect_Page" useConfig="DS-Directory">
+      <sql>call spSelect_Page(?,?)</sql>
+      <result element="mostvisitedpages" rowName="page">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="title" name="name" xsdType="string"/>
+         <element column="link" name="link" xsdType="string"/>
+      </result>
+      <param name="orgid" sqlType="STRING"/>
+      <param name="pageid" sqlType="STRING"/>
+   </query>
+   <query id="spInsert_Page" useConfig="DS-Directory">
+      <sql>call spInsert_Page(?,?,?,?,?)</sql>
+      <result element="Page" rowName="">
+         <element column="ID" name="ID" xsdType="string"/>
+      </result>
+      <param name="Title" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="OrganizationID" sqlType="STRING"/>
+      <param name="CreatedBy" sqlType="STRING"/>
+      <param name="IsActive" sqlType="TINYINT"/>
+   </query>
+   <query id="spDelete_Page" useConfig="DS-Directory">
+      <sql>call spDelete_Page(?,?)</sql>
+      <result element="Page" rowName="">
+         <element column="message" name="Message" xsdType="string"/>
+      </result>
+      <param name="PageID" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spUpdate_Page" useConfig="DS-Directory">
+      <sql>call spUpdate_Page(?,?,?,?,?)</sql>
+      <result element="Page" rowName="">
+         <element column="Message" name="Message" xsdType="string"/>
+      </result>
+      <param name="PageID" sqlType="STRING"/>
+      <param name="Title" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="OrganizationID" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <operation name="Insert_SocialMedia">
+      <call-query href="spInsert_SocialMedia">
+         <with-param name="TypeLookupID" query-param="TypeLookupID"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="OrganizationID" query-param="OrganizationID"/>
+         <with-param name="CreatedBy" query-param="CreatedBy"/>
+         <with-param name="IsActive" query-param="IsActive"/>
+      </call-query>
+   </operation>
+   <operation name="Select_SocialMedia">
+      <call-query href="spSelect_SocialMedia">
+         <with-param name="orgID" query-param="orgID"/>
+         <with-param name="SocialMediaID" query-param="SocialMediaID"/>
+      </call-query>
+   </operation>
+   <operation name="Update_SocialMedia">
+      <call-query href="spUpdate_SocialMedia">
+         <with-param name="SocialMediaID" query-param="SocialMediaID"/>
+         <with-param name="TypeLookupID" query-param="TypeLookupID"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="OrganizationID" query-param="OrganizationID"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="Delete_SocialMedia">
+      <call-query href="spDelete_SocialMedia">
+         <with-param name="SocialMediaID" query-param="SocialMediaID"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="Insert_RssFeed">
+      <call-query href="spInsert_RssFeed">
+         <with-param name="OrgID" query-param="OrgID"/>
+         <with-param name="CategoryLookupID" query-param="CategoryLookupID"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="CreatedBy" query-param="CreatedBy"/>
+         <with-param name="IsActive" query-param="IsActive"/>
+      </call-query>
+   </operation>
+   <operation name="Select_RssFeed">
+      <call-query href="spSelect_RssFeed">
+         <with-param name="OrgID" query-param="OrgID"/>
+         <with-param name="RssFeedID" query-param="RssFeedID"/>
+      </call-query>
+   </operation>
+   <operation name="Update_RssFeed">
+      <call-query href="spUpdate_RssFeed">
+         <with-param name="RssFeed" query-param="RssFeed"/>
+         <with-param name="OrganizationID" query-param="OrganizationID"/>
+         <with-param name="CategoryLookupID" query-param="CategoryLookupID"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="Delete_RssFeed">
+      <call-query href="spDelete_RssFeed">
+         <with-param name="RssFeed" query-param="RssFeed"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="insert_mostvisited">
+      <call-query href="spInsert_MostVisited">
+         <with-param name="orgid" query-param="orgid"/>
+         <with-param name="serviceid" query-param="serviceid"/>
+         <with-param name="weight" query-param="weight"/>
+         <with-param name="createdby" query-param="createdby"/>
+         <with-param name="isactive" query-param="isactive"/>
+      </call-query>
+   </operation>
+   <operation name="Select_Page">
+      <call-query href="spSelect_Page">
+         <with-param name="orgid" query-param="orgid"/>
+         <with-param name="pageid" query-param="pageid"/>
+      </call-query>
+   </operation>
+   <operation name="Insert_Page">
+      <call-query href="spInsert_Page">
+         <with-param name="Title" query-param="Title"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="OrganizationID" query-param="OrganizationID"/>
+         <with-param name="CreatedBy" query-param="CreatedBy"/>
+         <with-param name="IsActive" query-param="IsActive"/>
+      </call-query>
+   </operation>
+   <operation name="Delete_Page">
+      <call-query href="spDelete_Page">
+         <with-param name="PageID" query-param="PageID"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="Update_Page">
+      <call-query href="spUpdate_Page">
+         <with-param name="PageID" query-param="PageID"/>
+         <with-param name="Title" query-param="Title"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="OrganizationID" query-param="OrganizationID"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+</data>

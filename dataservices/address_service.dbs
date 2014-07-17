@@ -1,0 +1,119 @@
+<data name="address_service">
+   <config id="DS-Directory">
+      <property name="carbon_datasource_name">DS-Directory</property>
+   </config>
+   <query id="spInsert_Address" useConfig="DS-Directory">
+      <sql>call spInsert_Address(?,?,?,?,?,?,?,?,?,?,?);</sql>
+      <result element="address" rowName="">
+         <element column="ID" name="id" xsdType="string"/>
+      </result>
+      <param name="Street1" sqlType="STRING"/>
+      <param name="Street2" sqlType="STRING"/>
+      <param name="City" sqlType="STRING"/>
+      <param name="State" sqlType="STRING"/>
+      <param name="Zip" sqlType="STRING"/>
+      <param name="Phone" sqlType="STRING"/>
+      <param name="Latitude" sqlType="STRING"/>
+      <param name="Longitude" sqlType="STRING"/>
+      <param name="contactLink" sqlType="STRING"/>
+      <param name="CreatedBy" sqlType="STRING"/>
+      <param name="IsActive" sqlType="TINYINT"/>
+   </query>
+   <query id="spSelect_Address" useConfig="DS-Directory">
+      <sql>call spSelect_Address(?);</sql>
+      <result element="addresses" rowName="address">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="city" name="city" xsdType="string"/>
+         <element column="Latitude" name="lat" xsdType="string"/>
+         <element column="Longitude" name="lon" xsdType="string"/>
+         <element column="phone" name="phone" xsdType="string"/>
+         <element column="state" name="state" xsdType="string"/>
+         <element column="street1" name="street1" xsdType="string"/>
+         <element column="street2" name="street2" xsdType="string"/>
+         <element column="zip" name="zip" xsdType="string"/>
+         <element column="contactlink" name="contactlink" xsdType="string"/>
+      </result>
+      <param name="AddressID" sqlType="STRING"/>
+   </query>
+   <query id="spUpdate_Address" useConfig="DS-Directory">
+      <sql>call spUpdate_Address(?,?,?,?,?,?,?,?,?,?,?);</sql>
+      <result element="address" rowName="">
+         <element column="Message" name="message" xsdType="string"/>
+      </result>
+      <param name="addressid" sqlType="STRING"/>
+      <param name="street1" sqlType="STRING"/>
+      <param name="street2" sqlType="STRING"/>
+      <param name="city" sqlType="STRING"/>
+      <param name="state" sqlType="STRING"/>
+      <param name="zip" sqlType="STRING"/>
+      <param name="phone" sqlType="STRING"/>
+      <param name="Latitude" sqlType="STRING"/>
+      <param name="Longitude" sqlType="STRING"/>
+      <param name="contactLink" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spDelete_Address" useConfig="DS-Directory">
+      <sql>call spDelete_Address(?,?);</sql>
+      <result element="address" rowName="">
+         <element column="Message" name="message" xsdType="string"/>
+      </result>
+      <param name="AddressID" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spSelect_Service" useConfig="DS-Directory">
+      <sql>call spSelect_Service(?,?);</sql>
+      <result element="services" rowName="service">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="name" name="name" xsdType="string"/>
+         <element column="description" name="description" xsdType="string"/>
+         <element column="link" name="link" xsdType="string"/>
+         <element column="level" name="level" xsdType="string"/>
+         <element column="LevelLookupID" name="level_lookupid" xsdType="string"/>
+         <element column="createdDate" name="createdDate" xsdType="string"/>
+         <element column="updatedDate" name="updatedDate" xsdType="string"/>
+      </result>
+      <param name="OrgID" sqlType="STRING"/>
+      <param name="ServiceID" sqlType="STRING"/>
+   </query>
+   <operation name="Insert_Address">
+      <call-query href="spInsert_Address">
+         <with-param name="Street1" query-param="Street1"/>
+         <with-param name="Street2" query-param="Street2"/>
+         <with-param name="City" query-param="City"/>
+         <with-param name="State" query-param="State"/>
+         <with-param name="Zip" query-param="Zip"/>
+         <with-param name="Phone" query-param="Phone"/>
+         <with-param name="Latitude" query-param="Latitude"/>
+         <with-param name="Longitude" query-param="Longitude"/>
+         <with-param name="contactLink" query-param="contactLink"/>
+         <with-param name="CreatedBy" query-param="CreatedBy"/>
+         <with-param name="IsActive" query-param="IsActive"/>
+      </call-query>
+   </operation>
+   <operation name="Select_Address">
+      <call-query href="spSelect_Address">
+         <with-param name="AddressID" query-param="AddressID"/>
+      </call-query>
+   </operation>
+   <operation name="Update_Address">
+      <call-query href="spUpdate_Address">
+         <with-param name="addressid" query-param="addressid"/>
+         <with-param name="street1" query-param="street1"/>
+         <with-param name="street2" query-param="street2"/>
+         <with-param name="city" query-param="city"/>
+         <with-param name="state" query-param="state"/>
+         <with-param name="zip" query-param="zip"/>
+         <with-param name="phone" query-param="phone"/>
+         <with-param name="Latitude" query-param="Latitude"/>
+         <with-param name="Longitude" query-param="Longitude"/>
+         <with-param name="contactLink" query-param="contactLink"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="Delete_Address">
+      <call-query href="spDelete_Address">
+         <with-param name="AddressID" query-param="AddressID"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+</data>

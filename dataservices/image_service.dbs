@@ -1,0 +1,74 @@
+<data name="image_service">
+   <config id="DS-Directory">
+      <property name="carbon_datasource_name">DS-Directory</property>
+   </config>
+   <query id="spInsert_Image" useConfig="DS-Directory">
+      <sql>call spInsert_Image(?,?,?,?,?)</sql>
+      <result element="Image" rowName="">
+         <element column="ID" name="id" xsdType="string"/>
+      </result>
+      <param name="Title" sqlType="STRING"/>
+      <param name="URL" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="CreatedBy" sqlType="STRING"/>
+      <param name="IsActive" sqlType="TINYINT"/>
+   </query>
+   <query id="spSelect_Image" useConfig="DS-Directory">
+      <sql>call spSelect_Image(?)</sql>
+      <result element="image" rowName="">
+         <element column="id" name="id" xsdType="string"/>
+         <element column="Title" name="Title" xsdType="string"/>
+         <element column="URL" name="URL" xsdType="string"/>
+         <element column="Link" name="Link" xsdType="string"/>
+      </result>
+      <param defaultValue="null" name="ImageID" sqlType="STRING"/>
+   </query>
+   <query id="spUpdate_Image" useConfig="DS-Directory">
+      <sql>call spUpdate_Image(?,?,?,?,?)</sql>
+      <result element="Image" rowName="">
+         <element column="Message" name="message" xsdType="string"/>
+      </result>
+      <param name="ImageID" sqlType="STRING"/>
+      <param name="Title" sqlType="STRING"/>
+      <param name="URL" sqlType="STRING"/>
+      <param name="Link" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <query id="spDelete_Image" useConfig="DS-Directory">
+      <sql>call spDelete_Image(?,?)</sql>
+      <result element="Image" rowName="">
+         <element column="Message" name="message" xsdType="string"/>
+      </result>
+      <param name="ImageID" sqlType="STRING"/>
+      <param name="UpdatedBy" sqlType="STRING"/>
+   </query>
+   <operation name="Insert_Image">
+      <call-query href="spInsert_Image">
+         <with-param name="Title" query-param="Title"/>
+         <with-param name="URL" query-param="URL"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="CreatedBy" query-param="CreatedBy"/>
+         <with-param name="IsActive" query-param="IsActive"/>
+      </call-query>
+   </operation>
+   <operation name="Select_Image">
+      <call-query href="spSelect_Image">
+         <with-param name="ImageID" query-param="ImageID"/>
+      </call-query>
+   </operation>
+   <operation name="Update_Image">
+      <call-query href="spUpdate_Image">
+         <with-param name="ImageID" query-param="ImageID"/>
+         <with-param name="Title" query-param="Title"/>
+         <with-param name="URL" query-param="URL"/>
+         <with-param name="Link" query-param="Link"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+   <operation name="Delete_Image">
+      <call-query href="spDelete_Image">
+         <with-param name="ImageID" query-param="ImageID"/>
+         <with-param name="UpdatedBy" query-param="UpdatedBy"/>
+      </call-query>
+   </operation>
+</data>
